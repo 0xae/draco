@@ -12,13 +12,11 @@ use yii\filters\VerbFilter;
 /**
  * StudentController implements the CRUD actions for Student model.
  */
-class StudentController extends Controller
-{
+class StudentController extends Controller {
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -33,8 +31,7 @@ class StudentController extends Controller
      * Lists all Student models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $dataProvider = new ActiveDataProvider([
             'query' => Student::find(),
         ]);
@@ -49,8 +46,7 @@ class StudentController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -61,8 +57,7 @@ class StudentController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Student();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -80,8 +75,7 @@ class StudentController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -99,8 +93,7 @@ class StudentController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -113,8 +106,7 @@ class StudentController extends Controller
      * @return Student the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Student::findOne($id)) !== null) {
             return $model;
         } else {
